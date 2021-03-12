@@ -1,24 +1,16 @@
 <?php
-class A {
 
-}
-class B extends A{
-	public function __construct ($a){
-		$this->a=$a;
-	}
-	protected $a;
-}
-class C extends B{
-	public function __construct ($a,$b){
-		$this->b=$b;
-	    parent::__construct($a);
-	}
-	protected $b;
-}
-$a1 = new A();
-$b2 = new B($a1);
-$b3 = new B($b2);
-$c4 = new C($a1, $b3);
-$b5 = new B(c4);
-var_dunp($b5);
+use Kudr\A;
+use Kudr\B;
 
+include 'Kudr/A.php';
+include 'Kudr/B.php';
+
+$obj = new A ();
+$obj2 = new B ();
+$res = $obj2->roots(1, 5, 0);
+
+echo($obj->func(6, 3) . PHP_EOL);
+foreach ($res as $el) {
+    echo $el;
+}
