@@ -19,7 +19,7 @@ class Square extends Line implements EquationInterface
         $d = $this->D($a, $b, $c);
 
         if ($d == 0) {
-            return $this->x = [(-($b / (2 * $a)))];
+           return $this->x = [(-($b / (2 * $a)))];
 
         }
         if ($d < 0 ){

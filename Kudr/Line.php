@@ -4,14 +4,14 @@ namespace Kudr;
 
 class Line
 {
-    protected $X1;
 
-    public function line($a, $b)
+    public function Line($a, $b)
     {
         if ($a == 0) {
-            return null;
+            throw new KudrException('The equation does not have exist');
         }
-        return $this->X1 = array(-($b / $a));
-
+        MyLog::log("This is linear equation");
+        return $this->x = [(-($b / $a))];
     }
+    protected $x;
 }
