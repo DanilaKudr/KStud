@@ -1,16 +1,31 @@
 <?php
 
-use Kudr\A;
-use Kudr\B;
+use Kudr\{Square, MyLog, KudrException};
 
-include 'Kudr/A.php';
-include 'Kudr/B.php';
+include 'core/EquationInterface.php';
+include 'core/LogAbstract.php';
+include 'core/LogInterface.php';
+include 'Kudr/Line.php';
+include 'Kudr/Square.php';
+include 'Kudr/MyLog.php';
+include 'Kudr/KudrException.php';
 
-$obj = new A ();
-$obj2 = new B ();
-$res = $obj2->roots(1, 5, 0);
+$sqr = new Square();
 
-echo($obj->func(6, 3) . PHP_EOL);
-foreach ($res as $el) {
-    echo $el;
+try {
+    $a = readline();
+    $b = readline();
+    $c = readline();
+
+    MyLog::log("The equation is: ". $a.'x^2 + '.$b.'x + '.$c.' = 0'. PHP_EOL);
+
+    $res = $sqr->solve($a, $b, $c);
+
+    $str = implode(";", $res);
+    MyLog::log("; ", $res);
+
+} catch (KudrException $e){
+   MyLog::log("Error ".$e->getMessage());
 }
+
+MyLog::write();
