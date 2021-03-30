@@ -10,8 +10,8 @@ class Line
         if ($a == 0) {
             throw new KudrException('The equation does not have exist');
         }
-        MyLog::log("This is linear equation");
-        return $this->x = [(-($b / $a))];
+        MyLog::log("This is linear equation\n");
+        MyLog::log('Roots: ');
+        MyLog::log(-($b / $a));
     }
-    protected $x;
 }

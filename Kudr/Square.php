@@ -6,26 +6,30 @@ use core\EquationInterface;
 
 class Square extends Line implements EquationInterface
 {
-    public function D($a, $b, $c){
-        return ($b**2)-4*$a*$c;
-    }
-
-    public function solve($a, $b, $c)
+    public function solve($a, $b, $c): array
     {
         if ($a == 0) {
-            return $this->Line($b, $c);
+            return parent::line($b, $c);
         }
-        MyLog::log("This is square equation");
-        $d = $this->D($a, $b, $c);
-
-        if ($d == 0) {
-           return $this->x = [(-($b / (2 * $a)))];
+        $D = $this->searchD($a, $b, $c);
+        MyLog::log("This is quadratic equation\n");
+        MyLog::log('Roots: ');
+        if ($D > 0) {
+            MyLog::log((-$b) + sqrt($D)) / (2 * $a);
+            MyLog::log((-$b) - sqrt($D)) / (2 * $a);
+        }
+        if ($D == 0) {
+            MyLog::log(-($b / (2 * $a)));
 
         }
-        if ($d < 0 ){
-            throw new KudrException('The equation does not have solution');
+        if ($D < 0 ){
+            throw new KirillExeption('The equation does not have solution');
         }
+    }
 
-        return $this->x = [((-$b) + sqrt($d)) / (2 * $a), ((-$b) - sqrt($d)) / (2 * $a)];
+    protected function searchD($a, $b, $c)
+    {
+        $D = $b * $b - 4 * $a * $c;
+        return $D;
     }
 }
