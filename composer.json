@@ -1,0 +1,22 @@
+{
+    "name": "vendor/kstud",
+    "type": "library",
+    "license": "MIT",
+    "description": "",
+    "scripts": {
+        "post-install-cmd": "git symbolic-ref --short -q HEAD > version"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/DanilaKudr/kstud-lib.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/rok9ru/trpo-core.git"
+        }
+    ],
+    "require": {
+        "vendor/kudrlib": "^1.1"
+    }
+}

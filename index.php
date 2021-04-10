@@ -1,12 +1,7 @@
 <?php
+require __DIR__ . "/vendor/autoload.php";
 use Kudr\{Square, MyLog};
-include 'core\EquationInterface.php';
-include 'core\LogAbstract.php';
-include 'core\LogInterface.php';
-include 'Kudr\MyLog.php';
-include 'Kudr\Line.php';
-include 'Kudr\Square.php';
-include 'Kudr\KudrException.php';
+
 
 MyLog::log("Program version: " . trim(file_get_contents("version")));
 
@@ -19,7 +14,17 @@ try {
     $sqr = new Square();
     MyLog::log("The equation is: ". $a.'x^2 + '.$b.'x + '.$c.' = 0'. PHP_EOL);
 
+     if ($a == 0) {
+        MyLog::log("It is a linear equation.");
+    } else {
+        MyLog::log("It is a quad equation.");
+    }
+
     $res = $sqr->solve($a, $b, $c);
+    MyLog::log("Equation roots: ");
+    foreach ($res as $el) {
+        MyLog::log($el);
+    }
 
 } catch (RuntimeException $e){
     MyLog::log("Error".$e->getMessage());
